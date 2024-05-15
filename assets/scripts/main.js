@@ -4,7 +4,7 @@ let searchBar = document.querySelector('#search-bar')
 
 const book1 = new Book('https://i4.books-express.ro/bt/9780857504791/spare.jpg', 'Spare', 'Hardback', 'Prince Harry', 2023, 250);
 const book2 = new Book('https://i3.books-express.ro/bt/9780241506431/the-dc-book.jpg', 'The DC Book', 'Hardback', 'Stephen Wiacek', 2021, 30);
-const book3 = new Book('https://m.media-amazon.com/images/I/813iy9fGBQL._AC_UF894,1000_QL80_.jpg', 'Between a rock and a hard place', 'Hardback', 'Aron Rolstin', 354, 10, true)
+const book3 = new Book('https://m.media-amazon.com/images/I/813iy9fGBQL._AC_UF894,1000_QL80_.jpg', 'Between a rock and a hard place', 'Hardback', 'Aron Rolstin', 2005 ,354, true)
 
 let myLibrary = [book1, book2, book3];
 
