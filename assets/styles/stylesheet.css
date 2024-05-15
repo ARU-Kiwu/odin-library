@@ -1,0 +1,528 @@
+/* I used the MS Teams CSS stylesheet for this project with some custom CSS properties*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    /* common */
+    --brand-color: rgb(31, 71, 182);
+    --button-color: rgb(31, 71, 182);
+    --button-text-color: #fff;
+    --button-hover-color: rgb(19, 55, 155);
+    --button-hover-text-color: #fff;
+    --button-active-color: rgb(34, 36, 156);
+    --button-active-text-color: #fff;
+    --button-border: 1px solid hsla(0, 0%, 100%, .04);
+    --button-shadow: rgb(0 0 0 / 25%) 0px 0.2rem 0.4rem -0.075rem;
+    --button2-color: #fff;
+    --button2-text-color: rgb(37, 36, 35);
+    --button2-hover-color: rgb(237, 235, 233);
+    --button2-active-color: rgb(225, 223, 221);
+    --button2-border: 1px solid rgb(225, 223, 221);
+    --button2-shadow: rgb(0 0 0 / 10%) 0px 0.2rem 0.4rem -0.075rem;
+    --button-disabled-color: rgb(237, 235, 233);
+    --button-disabled-text-color: rgb(200, 198, 196);
+    --input-background-color: rgb(243, 242, 241);
+    --input-border-color: transparent;
+    --input-border-width: 0 0 0.1429rem 0;
+    --input-focus-border-color: transparent;
+    --input-focus-border-bottom-color: rgb(31, 71, 182);
+    --table-color: transparent;
+    --table-border: 1px solid rgb(237, 235, 233);
+    --border-color: rgb(237, 235, 233);
+
+    /* light theme */
+    --font-color: rgb(37, 36, 35);
+    --background-color: #fff;
+    --link-color: rgb(31, 71, 182);
+    --border-color: #E1DFDD;
+    --warning-color: #C4314B;
+}
+
+[data-theme="dark"] {
+    --font-color: #fff;
+    --background-color: transparent;
+    --link-color: #A6A7DC;
+    --border-color: #605E5C;
+    --warning-color: #F9526B;
+}
+
+
+body {
+    background-color: var(--background-color);
+    color: var(--font-color);
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+a,
+a:visited {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    text-decoration: underline;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+button {
+    min-width: 6rem;
+    font-weight: 600;
+    height: 2rem;
+    padding: 0 1.25rem;
+    vertical-align: middle;
+    border-radius: 2px;
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border: var(--button-border);
+    box-shadow: var(--button-shadow);
+    overflow: visible;
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+    color: var(--button-active-text-color);
+}
+
+button:active {
+    background-color: var(--button-active-color);
+    color: var(--button-active-text-color);
+    box-shadow: none;
+}
+
+button[disabled] {
+    background-color: var(--button-disabled-color);
+    color: var(--button-disabled-text-color);
+    box-shadow: none;
+}
+
+button:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+button.secondary {
+    background: var(--button2-color);
+    border: var(--button2-border);
+    color: var(--button2-text-color);
+    box-shadow: var(--button2-shadow);
+}
+
+button.secondary:hover {
+    background-color: var(--button2-hover-color);
+}
+
+button.secondary:active {
+    background-color: var(--button2-active-color);
+}
+
+label {
+    margin: 0 0.7143rem 0.2857rem 0;
+}
+
+input {
+    background-color: var(--input-background-color);
+    padding: 0.3571rem 0.8571rem;
+    line-height: unset;
+    border-width: var(--input-border-width);
+    border-radius: 0.2143rem 0.2143rem 0.1429rem 0.1429rem;
+    border-color: var(--input-border-color);
+    outline-style: none;
+    overflow: visible;
+    margin-bottom: 1.4286rem;
+}
+
+input:focus {
+    border-color: var(--input-focus-border-color);
+    border-bottom-color: var(--input-focus-border-bottom-color);
+}
+
+[type=checkbox],
+[type=radio] {
+    padding: 0;
+    margin-right: 0.5rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+}
+
+/* Text styling classes */
+
+
+.danger,
+.warning,
+.alert,
+.error {
+    color: var(--warning-color);
+}
+
+
+/* Font */
+
+@font-face {
+    font-family: 'Segoe UI Web';
+    src: url('https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-regular.woff2') format('woff2'), url('https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean/segoeui-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Segoe UI', 'Segoe UI Web', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+
+
+
+/* Custom */
+
+main {
+    position: relative;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.search-bar-wrapper label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex: 1 1 auto;
+}
+
+.search-bar-wrapper {
+    width: 400px;
+}
+
+.search-bar-wrapper input {
+    width: 100%;
+}
+
+.search-bar-wrapper {
+    padding-left: 0 50px;
+}
+
+
+.header input {
+    margin: 0;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 50px;
+    aspect-ratio: 1;
+}
+
+.book-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.book-header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 3px 7px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.book-header button:hover {
+    scale: 1.1;
+}
+
+
+.side-spacing {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.book-header div:nth-of-type(2) {
+    display: flex;
+    gap: 20px;
+    user-select: none;
+}
+
+.book-header div:nth-of-type(2)>div {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+}
+
+.book-header div:nth-of-type(2)>div span {
+    background-color: var(--brand-color);
+    padding: 3px;
+    color: var(--button-active-text-color);
+    border-radius: 3px;
+    transition: scale 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.book-header div:nth-of-type(2)>div span:hover {
+    scale: 1.1;
+    background: var(--button-hover-color);
+}
+
+.books {
+    padding-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(9, max-content);
+    grid-auto-rows: max-content;
+    gap: 20px;
+}
+
+.book-card {
+    width: 200px;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.075);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    font-weight: 400;
+    padding: 7px 7px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.book-card>div:nth-of-type(1) {
+    border-radius: 3px;
+}
+
+.book-card>div:nth-of-type(1) img {
+    object-fit: cover;
+    object-position: bottom;
+    height: 250px;
+    width: 200px;
+    border-radius: 3px;
+}
+
+.book-card>div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.book-card>div:nth-of-type(3) {
+    margin:10px 0;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book-card>div:nth-of-type(3) button {
+    margin: 0;
+}
+
+.delete-icon {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
+}
+
+.info-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-card h3 {
+    margin: 7px 0;
+}
+
+.book-card button {
+    background-color: var(--warning-color);
+    box-shadow: none;
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    margin-top: 15px;
+    width: 100px;
+    font-size: small;
+}
+
+.book-card button.read {
+    background-color: palegreen;
+    color: black;
+}
+
+.form-wrapper {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    backdrop-filter: blur(3px);
+}
+form {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    width: clamp(300px, 400px, 50vh);
+    padding: 20px;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.075);
+    border-radius: 3px;
+    position: absolute;
+    background-color: var(--background-color);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group:last-of-type label, .form-group:last-of-type input { 
+    margin: 0;
+}
+
+.form-group:last-of-type {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+    gap:10px;
+}
+
+form button {
+    margin-top: 15px;
+}
+
+form header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    user-select: none;
+}
+
+form header span {
+   transition: all 0.3s ease-in-out;
+}
+form header span:hover {
+    scale: 1.4;
+    rotate: 90deg;
+}
+
+.slide-in-top {
+	-webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2024-5-14 23:55:9
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+ */
+
+
+
+ @-webkit-keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+     
+    }
+  }
+  @keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+  }
+  
+
+
+  /* Responsiveness */
+  @media screen and (max-width:800px) {
+    .books {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .book-card > div:nth-of-type(1){
+      margin: 0 auto;
+    }
+
+    .header {
+        gap:10px;
+        flex-direction: column;
+    }
+
+    .search-bar-wrapper {
+        width: 100%;
+        padding: 40px;
+    }
+  }
+
+  @media screen and (max-width:500px) {
+    .books {
+        grid-template-columns: 1fr;
+    }
+    .header {
+        gap:10px;
+        flex-direction: column;
+    }
+
+    .search-bar-wrapper {
+        padding: 10px;
+    }
+  }
+
+  
