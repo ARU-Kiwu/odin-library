@@ -1,97 +1,93 @@
-
 const bookLibraryDisplay = document.querySelector('.books')
 let searchBar = document.querySelector('#search-bar')
+
+// The Book Class
+class Book {
+    constructor(coverURL, title, publisher, author, year, pages, readStatus) {
+        this.coverURL = coverURL,
+        this.title = title,
+        this.publisher = publisher,
+        this.author = author,
+        this.year = year,
+        this.pages = pages,
+        this.readStatus = readStatus
+    }
+
+    createBookCard() {
+        const card = document.createElement('div');
+        card.classList.add('book-card');
+        const firstDiv = document.createElement('div');
+        const bookCover = document.createElement('img');
+        bookCover.setAttribute('src', `${this.coverURL}`);
+        firstDiv.appendChild(bookCover);
+        const secondDiv = document.createElement('div');
+        const titleDisplay = document.createElement('h3');
+        titleDisplay.setAttribute('title', `${this.title}`)
+        this.title = this.trimTitle(title); 
+        titleDisplay.innerText = this.title;
+        secondDiv.appendChild(titleDisplay);
+        const values = [this.author, this.publisher, this.year, this.pages]
+        const labels = ['Author', 'Publisher', 'Year', 'Pages']
+        values.forEach((value,i) => {
+           const div = document.createElement('div');
+           div.classList.add('info-wrapper')
+           const label = document.createElement('p');
+           label.innerText = labels[i]
+           div.appendChild(label);
+           const valueDisplay = document.createElement('p');
+           valueDisplay.innerText = value
+           div.appendChild(valueDisplay)
+           secondDiv.appendChild(div)
+        })
+        const readButton = document.createElement('button');
+        const readStatusCheckbox = document.querySelector('#readStatus');
+        if(readStatusCheckbox.checked === true || this.readStatus === true) {
+            readButton.innerText = 'Read';
+            readButton.classList.add('read');
+        } else readButton.innerText = 'Not Read';
+        readButton.addEventListener('click', ()=> {
+            if(readButton.innerText === 'Not Read') {
+                readButton.classList.add('read')
+                readButton.innerText = 'Read'
+            } else if(readButton.innerText === 'Read') {
+                readButton.innerText = 'Not Read'
+                readButton.classList.remove('read')
+            }
+        })
+        const thirdDiv = document.createElement('div');
+        const deleteButton = document.createElement('div');
+        deleteButton.classList.add('delete-icon')
+        deleteButton.innerHTML = 
+        `
+        <span class="material-symbols-outlined">
+        delete
+        </span>
+        `
+        deleteButton.addEventListener('dblclick', ()=> {
+             bookLibraryDisplay.removeChild(card)
+        })
+        thirdDiv.append(readButton)
+        thirdDiv.append(deleteButton)
+        card.append(firstDiv)
+        card.append(secondDiv)
+        card.append(thirdDiv)
+        bookLibraryDisplay.appendChild(card);
+    }
+
+    trimTitle(title) {
+       if(this.title.length >= 20) {
+         return `${this.title = this.title.slice(0,20)}...`
+       }
+       else return this.title
+    }
+}
+
 
 const book1 = new Book('https://i4.books-express.ro/bt/9780857504791/spare.jpg', 'Spare', 'Hardback', 'Prince Harry', 2023, 250);
 const book2 = new Book('https://i3.books-express.ro/bt/9780241506431/the-dc-book.jpg', 'The DC Book', 'Hardback', 'Stephen Wiacek', 2021, 30);
 const book3 = new Book('https://m.media-amazon.com/images/I/813iy9fGBQL._AC_UF894,1000_QL80_.jpg', 'Between a rock and a hard place', 'Hardback', 'Aron Rolstin', 2005 ,354, true)
-
-let myLibrary = [book1, book2, book3];
-
-//Defined a title trimmer function on the Object prototype to use it globally
-Object.prototype.trimTitle = function(title) {
-    this.title = title;
-    if(title.length >= 19) {
-       return title = title.substr(0,20) + '...'
-    }else return title
-  }
-
-
-// The Book Constructor
-function Book(coverURL, title, publisher, author, year, pages, readStatus) {
-  this.coverURL = coverURL;
-  this.title = title
-  this.publisher = publisher;
-  this.author = author;
-  this.year = year;
-  this.pages = pages;
-  this.readStatus = readStatus;
-
-  this.createBookCard = function() {
-    const card = document.createElement('div');
-    card.classList.add('book-card');
-    const firstDiv = document.createElement('div');
-    const bookCover = document.createElement('img');
-    bookCover.setAttribute('src', `${this.coverURL}`);
-    firstDiv.appendChild(bookCover);
-    const secondDiv = document.createElement('div');
-    const titleDisplay = document.createElement('h3');
-    titleDisplay.setAttribute('title', `${this.title}`)
-    this.title = this.trimTitle(title); 
-    titleDisplay.innerText = this.title;
-    secondDiv.appendChild(titleDisplay);
-    const values = [this.author, this.publisher, this.year, this.pages]
-    const labels = ['Author', 'Publisher', 'Year', 'Pages']
-    values.forEach((value,i) => {
-       const div = document.createElement('div');
-       div.classList.add('info-wrapper')
-       const label = document.createElement('p');
-       label.innerText = labels[i]
-       div.appendChild(label);
-       const valueDisplay = document.createElement('p');
-       valueDisplay.innerText = value
-       div.appendChild(valueDisplay)
-       secondDiv.appendChild(div)
-    })
-    const readButton = document.createElement('button');
-    const readStatusCheckbox = document.querySelector('#readStatus');
-    console.log(readStatusCheckbox.checked)
-    if(readStatusCheckbox.checked === true || this.readStatus === true) {
-        readButton.innerText = 'Read';
-        readButton.classList.add('read');
-    } else readButton.innerText = 'Not Read';
-    readButton.addEventListener('click', ()=> {
-        if(readButton.innerText === 'Not Read') {
-            readButton.classList.add('read')
-            readButton.innerText = 'Read'
-        } else if(readButton.innerText === 'Read') {
-            readButton.innerText = 'Not Read'
-            readButton.classList.remove('read')
-        }
-    })
-    const thirdDiv = document.createElement('div');
-    const deleteButton = document.createElement('div');
-    deleteButton.classList.add('delete-icon')
-    deleteButton.innerHTML = 
-    `
-    <span class="material-symbols-outlined">
-    delete
-    </span>
-    `
-    deleteButton.addEventListener('dblclick', ()=> {
-         bookLibraryDisplay.removeChild(card)
-    })
-    thirdDiv.append(readButton)
-    thirdDiv.append(deleteButton)
-    card.append(firstDiv)
-    card.append(secondDiv)
-    card.append(thirdDiv)
-    bookLibraryDisplay.appendChild(card);
-  }
-
-}
-
-
+const book4 = new Book('https://i3.books-express.ro/bt/9780241479285/create-space.jpg','Create Space', 'Dilly Carter', 'Hardback', 2021, 192)
+let myLibrary = [book1, book2, book3, book4];
 
 // UI
 const formWrapper = document.querySelector('.form-wrapper');
@@ -131,14 +127,9 @@ function addBookToLibrary() {
     
 }
 
-
-
-
-
-
 searchBar.addEventListener('input', ()=> {  
     searchResults = myLibrary.filter(item => {
-    return item = item.title.includes(searchBar.value)
+    return item = item.title.toLowerCase().includes(searchBar.value.toLowerCase())
 });
   bookLibraryDisplay.innerHTML = ''
   searchResults.forEach(item => {
