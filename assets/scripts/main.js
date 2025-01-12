@@ -182,6 +182,7 @@ const formElement = document.querySelector('form');
 const addBookButton = document.querySelector('#addBook');
 const closeButton = document.querySelector('#closeButton');
 const submitButton = document.querySelector('button[type="submit"]')
+const urlFormGroup = document.querySelector('form > .form-group:nth-of-type(1):not(header)')
 
 
 addBookButton.addEventListener('click', () => {
@@ -195,7 +196,6 @@ closeButton.addEventListener('click', () => {
 
 formElement.addEventListener('submit', function (event) {
     event.preventDefault()
-    addBookToLibrary()
     formElement.reset()
 })
 
@@ -228,6 +228,34 @@ myLibrary.forEach(item => {
     item.createBookCard()
 })
 
+function handleImageURL(element){
+    const imageElement = document.querySelector('#img')
+    imageElement.src = element.value
+}
+
+urlInputElement = document.querySelector('#url')
+urlInputElement.addEventListener('input', () => {
+    handleImageURL(urlInputElement);
+
+    const regex = /^https:\/\//;
+    const imageUrlRegex = /\.(jpg|jpeg|png|gif|bmp|webp|svg)$/i;
+
+    if (!regex.test(urlInputElement.value)) {
+        urlInputElement.setCustomValidity(
+            'This URL is not secure. It is advisable to use HTTPS connections.'
+        );
+    } else if (!imageUrlRegex.test(urlInputElement.value)) {
+        urlInputElement.setCustomValidity(
+            'This URL does not point to a valid image. Please use a valid image URL (e.g., ending with .jpg, .png).'
+        );
+    } else {
+        // Clear any existing custom validation message if the input is valid
+        urlInputElement.setCustomValidity('');
+    }
+
+    // Show the validation message if any
+    urlInputElement.reportValidity();
+});
 
 
-
+titleInputElement = document.querySelector('#title')
