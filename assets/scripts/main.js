@@ -256,6 +256,3 @@ urlInputElement.addEventListener('input', () => {
     // Show the validation message if any
     urlInputElement.reportValidity();
 });
-
-
-titleInputElement = document.querySelector('#title')
